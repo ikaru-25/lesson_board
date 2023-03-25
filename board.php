@@ -18,6 +18,16 @@
                 <input type="submit" class="btn btn-info mt-5" name="btn1" value="投稿する">
             </div>
         </form>
+
+        <?php
+        $personal_name = $_POST['personal_name'];
+        $contents = $_POST['contents'];
+        $contents = nl2br($contents);
+
+        print('<p>投稿者:'.$personal_name.'</p>');
+        print('<p>内容:</p>');
+        print('<p>'.$contents.'</p>');
+        ?>
     </div>
 </body>
 </html>
