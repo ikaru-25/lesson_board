@@ -8,7 +8,6 @@
     <div class="mx-auto " style="width: 500px;">
         <form method="POST" action="<?php print($_SERVER['PHP_SELF']) ?>" class="mt-5">
             <div>
-                <input type="text" name="personal_name" placeholder="作成者"><br><br>
             </div>
             <div>
                 <textarea name="contents" rows="8" cols="40" placeholder="内容"></textarea>
@@ -22,11 +21,24 @@
         <?php
         $personal_name = $_POST['personal_name'];
         $contents = $_POST['contents'];
-        $contents = nl2br($contents);
 
-        print('<p>投稿者:'.$personal_name.'</p>');
-        print('<p>内容:</p>');
-        print('<p>'.$contents.'</p>');
+
+        // セッション
+        if(!$_SESSION['post']) {
+            $_SESSION['post'] = [];
+        }
+
+        $_SESSION['post'][] = $contents;
+
+        foreach($_SESSION['post'] as $v) {
+            print($v);
+        }
+
+        // print($personal_name);
+        // print($contents);
+
+
+
         ?>
     </div>
 </body>
